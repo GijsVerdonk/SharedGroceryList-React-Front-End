@@ -48,6 +48,7 @@ const Profile = () => {
                 <img src={user.picture} alt={user.name} />
                 <h2>{user.name}</h2>
                 <p>{user.email}</p>
+                <p>{user.sub}</p>
                 <h3>User Metadata</h3>
                 {userMetadata ? (
                     <pre>{JSON.stringify(userMetadata, null, 2)}</pre>

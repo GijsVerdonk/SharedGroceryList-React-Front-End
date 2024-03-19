@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import Settings from "./pages/Settings.jsx";
 
 const App = () => {
   const { isAuthenticated } = useAuth0();

@@ -1,11 +1,10 @@
 import Profile from "../components/Profile.jsx";
+import GroceryList from "../components/GroceryList.jsx";
 
 function Home() {
   return (
     <div>
-      <h1>Boodschappenlijst</h1>
-      <p>Artikelen komen hier te staan.</p>
-        <h1>Profiel</h1>
+        <GroceryList></GroceryList>
         <Profile></Profile>
     </div>
   );
