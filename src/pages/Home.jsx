@@ -5,6 +5,8 @@ function Home() {
     <div>
       <h1>Boodschappenlijst</h1>
       <p>Artikelen komen hier te staan.</p>
+        <h1>Profiel</h1>
+        <Profile></Profile>
     </div>
   );
 }

@@ -7,7 +7,11 @@ root.render(
   <Auth0Provider
   domain={import.meta.env.VITE_REACT_APP_DOMAIN}
   clientId={import.meta.env.VITE_REACT_APP_CLIENTID}
-  authorizationParams={{ redirect_uri: window.location.origin }}>
+  authorizationParams={{
+    redirect_uri: window.location.origin,
+    audience: "https://dev-1qptdla0pgqbqxfn.us.auth0.com/api/v2/",
+    scope: "read:current_user update:current_user_metadata"
+  }}>
   <App />
 </Auth0Provider>
 );
