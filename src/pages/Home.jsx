@@ -6,7 +6,6 @@ import UserGroceryLists from "../components/UserGroceryLists.jsx";
 function Home() {
   return (
     <div>
-        <GroceryList></GroceryList>
         <Profile></Profile>
         <CreateGroceryListForm></CreateGroceryListForm>
         <UserGroceryLists></UserGroceryLists>

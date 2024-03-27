@@ -26,7 +26,7 @@ const CreateGroceryListForm = () => {
             <div>
                 <form onSubmit={handleSubmit}>
                     <label>Naam</label>
-                    <input onChange={handleInput} type="text" name="name" placeholder="Naam"/>
+                    <input required onChange={handleInput} type="text" name="name" placeholder="Naam"/>
                     <button type="submit">Toevoegen</button>
                 </form>
             </div>

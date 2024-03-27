@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
 
-const GroceryList = () => {
+const UserGroceryLists = () => {
     const [listNames, setListNames] = useState([]);
-    const accessToken = sessionStorage.getItem('access_token');
 
-    useEffect(() => {
+
+
+    // useEffect(() => {
         const getUserListNames = async () => {
+            var accessToken = sessionStorage.getItem('access_token');
+            console.log(`Bearer ${accessToken}`)
             const response = await fetch('http://localhost:5226/api/User/Lists', {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`
@@ -20,12 +23,15 @@ const GroceryList = () => {
             }
         };
 
+    useEffect(() => {
         getUserListNames();
     }, []);
+
 
     return (
         <div>
             <h2>Alle boodschappenlijsten</h2>
+            <button onClick={getUserListNames}>Verversen</button>
             <ul>
                 <table>
                     <tr>
@@ -44,4 +50,4 @@ const GroceryList = () => {
     );
 };
 
-export default GroceryList;
+export default UserGroceryLists;
