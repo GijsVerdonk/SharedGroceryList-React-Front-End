@@ -5,10 +5,11 @@ const GroceryList = () => {
 
     useEffect(() => {
         const getItems = async () => {
-            const response = await fetch('http://localhost:5006/api/Item');
+            const response = await fetch('http://localhost:5226/api/Item');
             if (response.ok) {
                 const data = await response.json();
                 setItems(data);
+                console.log(data);
             } else {
                 console.log("Error.")
             }
@@ -25,14 +26,12 @@ const GroceryList = () => {
                     <tr>
                         <th>Id</th>
                         <th>Artikel</th>
-                        <th>Hoeveelheid</th>
                     </tr>
 
                     {items.map(item => (
                         <tr key={item.id}>
                             <td key={item.id}>{item.id}</td>
                             <td key={item.id}>{item.name}</td>
-                            <td key={item.id}>{item.amount}</td>
                         </tr>
                     ))}
 

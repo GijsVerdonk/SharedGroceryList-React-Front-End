@@ -19,6 +19,7 @@ const Profile = () => {
                 });
 
                 setAccessToken(accessToken);
+                sessionStorage.setItem('access_token', accessToken);
 
                 const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
 
