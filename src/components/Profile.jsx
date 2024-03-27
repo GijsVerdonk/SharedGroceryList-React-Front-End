@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
 const Profile = () => {
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -41,6 +42,30 @@ const Profile = () => {
 
         getUserMetadata();
     }, [getAccessTokenSilently, user?.sub,]);
+
+    handleLogin();
+    function handleLogin() {
+                axios.get('http://localhost:5226/api/User', {
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                })
+            .then()
+            .catch(err=> {
+                console.log(err)
+                if (err.response.status == 404) {
+                    console.log("First time login, user will be created.")
+                    axios.post('http://localhost:5226/api/User', { user }, {
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`
+                        }
+                    })
+                        .then(response => console.log(response))
+                        .catch(err=> console.log(err))
+                }
+                });
+
+    }
 
     return (
         isAuthenticated && (
