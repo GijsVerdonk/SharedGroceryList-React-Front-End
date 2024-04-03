@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 // import AccountMenu from "./components/AccountMenu.jsx";
 import AccountMenu from "./components/AccountMenu.jsx";
+import AppBar from "./components/AppBar.jsx";
 
 const App = () => {
   const { isAuthenticated } = useAuth0();
@@ -13,7 +14,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <AccountMenu />
+        <AppBar />
         {isAuthenticated ? (
           <Routes>
             <Route path="/" element={<Home />} />
