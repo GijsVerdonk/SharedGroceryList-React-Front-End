@@ -15,9 +15,10 @@ import AdbIcon from '@mui/icons-material/Adb';
 import {useAuth0} from "@auth0/auth0-react";
 import {Icon} from "@mui/material";
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import LogoutButton from "./LogoutButton.jsx";
 
 const pages = ['Mijn lijsten', 'Deel een lijst'];
-const settings = ['Profile', 'Logout'];
+const settings = ['Profiel', 'Instellingen'];
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -117,6 +118,7 @@ function ResponsiveAppBar() {
                     >
                         LOGO
                     </Typography>
+                    {isAuthenticated && (
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
@@ -128,7 +130,7 @@ function ResponsiveAppBar() {
                             </Button>
                         ))}
                     </Box>
-
+                    )}
                     <Box sx={{ flexGrow: 0 }}>
                         {isAuthenticated && (
                         <Tooltip title="Open settings">
@@ -158,6 +160,9 @@ function ResponsiveAppBar() {
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
+                            <MenuItem onClick={handleCloseUserMenu}>
+                            <LogoutButton/>
+                            </MenuItem>
                         </Menu>
                     </Box>
                 </Toolbar>

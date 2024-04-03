@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 // import AccountMenu from "./components/AccountMenu.jsx";
 import AccountMenu from "./components/AccountMenu.jsx";
 import AppBar from "./components/AppBar.jsx";
+import {Alert} from "@mui/material";
 
 const App = () => {
   const { isAuthenticated } = useAuth0();
@@ -15,6 +16,11 @@ const App = () => {
     <Router>
       <div>
         <AppBar />
+          {!isAuthenticated && (
+              <Alert severity="info">
+                  Log in om toegang te krijgen tot alle functionaliteit.
+              </Alert>
+          )}
         {isAuthenticated ? (
           <Routes>
             <Route path="/" element={<Home />} />
