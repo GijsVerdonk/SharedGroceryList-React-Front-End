@@ -1,12 +1,11 @@
 import "./App.css";
 import LoginButton from "./components/LoginButton";
-import "bootstrap/dist/css/bootstrap.min.css";
-
 import { useAuth0 } from "@auth0/auth0-react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Settings from "./pages/Settings.jsx";
+// import AccountMenu from "./components/AccountMenu.jsx";
+import AccountMenu from "./components/AccountMenu.jsx";
 
 const App = () => {
   const { isAuthenticated } = useAuth0();
@@ -14,7 +13,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Navbar />
+        <AccountMenu />
         {isAuthenticated ? (
           <Routes>
             <Route path="/" element={<Home />} />
