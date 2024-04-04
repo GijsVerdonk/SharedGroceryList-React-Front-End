@@ -43,13 +43,13 @@ export default function UserListDataGrid() {
                     // { field: 'code', headerName: 'Code', width: 150, editable: true },
                     // Add more columns as needed
                 ]}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 5,
-                        },
-                    },
-                }}
+                // initialState={{
+                //     pagination: {
+                //         paginationModel: {
+                //             pageSize: 30,
+                //         },
+                //     },
+                // }}
                 pageSizeOptions={[5]}
                 checkboxSelection
                 disableRowSelectionOnClick
