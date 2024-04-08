@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 export default function UserListDataGrid() {
     const [lists, setLists] = useState([]);
 
-    const getUserListNames = async () => {
+    const getUserLists = async () => {
         var accessToken = sessionStorage.getItem('access_token');
         console.log(`Bearer ${accessToken}`)
         const response = await fetch('http://localhost:5226/api/User/Lists', {
@@ -25,12 +25,12 @@ export default function UserListDataGrid() {
     };
 
     useEffect(() => {
-        getUserListNames();
+        getUserLists();
     }, []);
 
     return (
         <div>
-            <Button variant="outlined" onClick={getUserListNames}>Refresh</Button>
+            <Button variant="outlined" onClick={getUserLists}>Refresh</Button>
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={lists}
