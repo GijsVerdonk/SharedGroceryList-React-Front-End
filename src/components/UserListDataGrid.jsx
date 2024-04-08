@@ -36,23 +36,11 @@ export default function UserListDataGrid() {
                 rows={lists}
                 columns={[
                     { field: 'id', headerName: 'ID', width: 90 },
-                    { field: 'name', headerName: 'Naam', width: 150, editable: true },
-                    { field: 'code', headerName: 'Code', width: 150, editable: true },
-                    { field: 'codeActiveSince', headerName: 'CodeActiveSince', width: 150, editable: true },
-                    { field: 'isActive', headerName: 'isActive', width: 150, editable: true },
-                    // { field: 'code', headerName: 'Code', width: 150, editable: true },
-                    // Add more columns as needed
+                    { field: 'name', headerName: 'Naam', width: 150, editable: false },
+                    { field: 'code', headerName: 'Code', width: 150, editable: false },
+                    { field: 'codeActiveSince', headerName: 'CodeActiveSince', width: 150, editable: false },
+                    { field: 'isActive', headerName: 'isActive', width: 150, editable: false },
                 ]}
-                // initialState={{
-                //     pagination: {
-                //         paginationModel: {
-                //             pageSize: 30,
-                //         },
-                //     },
-                // }}
-                pageSizeOptions={[5]}
-                checkboxSelection
-                disableRowSelectionOnClick
             />
         </Box>
         </div>
