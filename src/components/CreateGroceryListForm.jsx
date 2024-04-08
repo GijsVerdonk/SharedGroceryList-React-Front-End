@@ -2,6 +2,7 @@ import {useState} from "react";
 import axios from 'axios';
 import {useAuth0} from "@auth0/auth0-react";
 import {TextField} from "@mui/material";
+import Button from "@mui/material/Button";
 
 const CreateGroceryListForm = () => {
 
@@ -26,9 +27,8 @@ const CreateGroceryListForm = () => {
         return(
             <div>
                 <form onSubmit={handleSubmit}>
-                    <label>Naam</label>
-                    <TextField id="outlined-basic" label="Outlined" variant="outlined" required onChange={handleInput} type="text" name="name" placeholder="Naam"/>
-                    <button type="submit">Toevoegen</button>
+                    <TextField sx={{m: 2}} id="outlined-basic" label="Naam" variant="outlined" required onChange={handleInput} type="text" name="name" placeholder="Naam"/>
+                    <Button sx={{m: 2}}  variant="contained" type="submit">Toevoegen</Button>
                 </form>
             </div>
         )
