@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
+import Cookies from 'js-cookie';
 
 const Profile = () => {
     const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -21,8 +22,8 @@ const Profile = () => {
 
                 setAccessToken(accessToken);
                 sessionStorage.setItem('access_token', accessToken);
-
-                const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+                Cookies.set('token', accessToken, {expires: 7, secure: true});
+                // const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
 
                 const metadataResponse = await fetch(userDetailsByIdUrl, {
                     headers: {

@@ -5,9 +5,19 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AppBar from "./components/AppBar.jsx";
 import {Alert} from "@mui/material";
+import {useEffect} from "react";
+import Cookies from 'js-cookie';
 
 const App = () => {
-  const { isAuthenticated } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, isLoading} = useAuth0();
+
+    useEffect(() => {
+        var access_token = Cookies.get("token");
+
+        if (!isAuthenticated && !isLoading && access_token.length > 1) {
+            loginWithRedirect();
+        }
+    }, [isAuthenticated, isLoading, loginWithRedirect]);
 
   return (
     <Router>

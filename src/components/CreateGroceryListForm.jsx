@@ -2,10 +2,12 @@ import {useState} from "react";
 import axios from 'axios';
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
+import Cookies from 'js-cookie';
 
 const CreateGroceryListForm = () => {
 
-    const accessToken = sessionStorage.getItem('access_token');
+    // const accessToken = sessionStorage.getItem('access_token');
+    const accessToken = Cookies.get('token');
     const [list, setList] = useState({
         name: ''
     })

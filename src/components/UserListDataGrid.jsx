@@ -3,12 +3,14 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import {useEffect, useState} from "react";
 import Button from "@mui/material/Button";
+import Cookies from "js-cookie";
 
 export default function UserListDataGrid() {
     const [lists, setLists] = useState([]);
 
     const getUserLists = async () => {
-        var accessToken = sessionStorage.getItem('access_token');
+        // var accessToken = sessionStorage.getItem('access_token');
+        const accessToken = Cookies.get('token');
         console.log(`Bearer ${accessToken}`)
         const response = await fetch('http://localhost:5226/api/User/Lists', {
             headers: {
