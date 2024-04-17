@@ -4,9 +4,12 @@ import { DataGrid } from '@mui/x-data-grid';
 import {useEffect, useState} from "react";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
+import { useNavigate } from 'react-router-dom';
 
 export default function UserListDataGrid() {
+    const navigate = useNavigate();
     const [lists, setLists] = useState([]);
+    const [selectedList, setSelectedList] = useState(null);
 
     const getUserLists = async () => {
         const accessToken = Cookies.get('accessToken');
@@ -29,6 +32,11 @@ export default function UserListDataGrid() {
         getUserLists();
     }, []);
 
+    const handleListClick = (row) => {
+        setSelectedList(row);
+        navigate(`/list/${row.id}`);
+    }
+
     return (
         <div>
             <Button variant="outlined" onClick={getUserLists}>Refresh</Button>
@@ -42,8 +50,10 @@ export default function UserListDataGrid() {
                     { field: 'codeActiveSince', headerName: 'CodeActiveSince', width: 150, editable: false },
                     { field: 'isActive', headerName: 'isActive', width: 150, editable: false },
                 ]}
+                onRowClick={handleListClick}
             />
         </Box>
+            {/*{selectedList && <List> list={selectedList}</List>}*/}
         </div>
     );
 }

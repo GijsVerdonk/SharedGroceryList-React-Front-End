@@ -7,6 +7,7 @@ import AppBar from "./components/AppBar.jsx";
 import {Alert} from "@mui/material";
 import {useEffect} from "react";
 import Cookies from 'js-cookie';
+import List from "./components/List.jsx";
 
 const App = () => {
   const {isAuthenticated} = useAuth0();
@@ -21,7 +22,8 @@ const App = () => {
           )}
         {isAuthenticated ? (
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Home />} />
+              <Route path="/list/:id" element={<List/>} />
           </Routes>
         ) : (
           <LoginButton />
