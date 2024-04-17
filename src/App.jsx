@@ -9,16 +9,7 @@ import {useEffect} from "react";
 import Cookies from 'js-cookie';
 
 const App = () => {
-  const { loginWithRedirect, isAuthenticated, isLoading} = useAuth0();
-
-    useEffect(() => {
-        var access_token = Cookies.get("token");
-
-        if (!isAuthenticated && !isLoading && access_token.length > 1) {
-            loginWithRedirect();
-        }
-    }, [isAuthenticated, isLoading, loginWithRedirect]);
-
+  const {isAuthenticated} = useAuth0();
   return (
     <Router>
       <div>

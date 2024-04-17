@@ -9,10 +9,9 @@ export default function UserListDataGrid() {
     const [lists, setLists] = useState([]);
 
     const getUserLists = async () => {
-        // var accessToken = sessionStorage.getItem('access_token');
-        const accessToken = Cookies.get('token');
+        const accessToken = Cookies.get('accessToken');
         console.log(`Bearer ${accessToken}`)
-        const response = await fetch('http://localhost:5226/api/User/Lists', {
+        const response = await fetch('https://localhost:7001/api/User/Lists', {
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             }

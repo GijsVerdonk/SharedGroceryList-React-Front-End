@@ -6,8 +6,7 @@ import Cookies from 'js-cookie';
 
 const CreateGroceryListForm = () => {
 
-    // const accessToken = sessionStorage.getItem('access_token');
-    const accessToken = Cookies.get('token');
+    const accessToken = Cookies.get('accessToken');
     const [list, setList] = useState({
         name: ''
     })
@@ -17,7 +16,7 @@ const CreateGroceryListForm = () => {
 
     function handleSubmit(event) {
         event.preventDefault()
-        axios.post('http://localhost:5226/api/List', { name: list.name }, {
+        axios.post('https://localhost:7001/api/List', { name: list.name }, {
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             }

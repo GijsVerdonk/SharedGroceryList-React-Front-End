@@ -21,9 +21,10 @@ const Profile = () => {
                 });
 
                 setAccessToken(accessToken);
-                sessionStorage.setItem('access_token', accessToken);
-                Cookies.set('token', accessToken, {expires: 7, secure: true});
-                // const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+
+                document.cookie = `accessToken=${accessToken}; Secure; SameSite=None;`; //If HttpOnly is added, doesn't work.
+
+                const response = await fetch('https://localhost:7001/api/User/GetAuth0Id');
 
                 const metadataResponse = await fetch(userDetailsByIdUrl, {
                     headers: {
