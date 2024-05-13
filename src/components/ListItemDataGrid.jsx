@@ -45,13 +45,8 @@ export default function ListItemDataGrid() {
         getListItems();
     }, []);
 
-    const handleItemClick = (row) => {
-        setSelectedList(row);
-        navigate(`/item/${row.id}`);
-    }
-
-    const handleItemDelete = (id) => {
-        axios.delete(`https://localhost:7001/api/List/${id}/Items/${id}` ,{
+    const handleItemDelete = (listId, itemId) => {
+        axios.delete(`https://localhost:7001/api/List/${listId}/Items/${itemId}` ,{
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             }
@@ -70,11 +65,10 @@ export default function ListItemDataGrid() {
                     { field: 'name', headerName: 'Naam', width: 150, editable: false },
                     { field: 'quantity', headerName: 'Hoeveelheid', width: 150, editable: false },
                     {
-                        renderCell: () => (
-                            <Button onClick={() => handleItemDelete(id)}><DeleteIcon/></Button>)
+                        renderCell: (params) => (
+                            <Button onClick={() => handleItemDelete(id, params.row.id)}><DeleteIcon/></Button>)
                     },
                 ]}
-                onRowClick={handleItemClick}
             />
         </Box>
             {/*{selectedList && <List> list={selectedList}</List>}*/}
