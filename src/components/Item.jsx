@@ -7,38 +7,37 @@ import DeleteListButton from "./DeleteListButton.jsx";
 
 const List = () => {
   const { id } = useParams();
-  const [list, setList ] = useState(null);
+  const [item, setItem ] = useState(null);
 
   useEffect(() => {
-    const getList = async () => {
-      const response = await fetch(`https://localhost:7001/api/List/${id}`);
+    const getItem = async () => {
+      const response = await fetch(`https://localhost:7001/api/Item/${id}`);
       if (response.ok) {
         const data = await response.json();
-        setList(data);
+        setItem(data);
         console.log(data);
       } else {
         console.log("Error.")
       }
     };
 
-    getList();
+    getItem();
   }, []);
 
-  if (list) {
+  if (item) {
     return (
         <div>
 
-            <Typography sx={{ m: 3 }} variant="h5" component="h5">{list.name}</Typography>
-            <ListItemDataGrid></ListItemDataGrid>
-            <AddListItemForm></AddListItemForm>
-            <DeleteListButton></DeleteListButton>
+            <h1>{item.name}</h1>
+            <h1>{item.quantity}</h1>
+
         </div>
     );
   }
 
     return (
         <div>
-        <h1>Lijst niet gevonden.</h1>
+        <h1>Item niet gevonden.</h1>
       </div>
   );
 };
