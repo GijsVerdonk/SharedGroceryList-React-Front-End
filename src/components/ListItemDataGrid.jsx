@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 import {useNavigate, useParams} from 'react-router-dom';
+import RefreshIcon from "@mui/icons-material/Refresh.js";
 
 export default function ListItemDataGrid() {
     const navigate = useNavigate();
@@ -22,7 +23,14 @@ export default function ListItemDataGrid() {
         });
         if (response.ok) {
             const data = await response.json();
-            setItems(data);
+            const extractedData = data.map(item => ({
+                id: item.item.id,
+                name: item.item.name,
+                quantity: item.quantity
+            }));
+            setItems(extractedData);
+
+            // setItems(data);
             console.log(data);
         } else {
             setItems([])
@@ -41,7 +49,7 @@ export default function ListItemDataGrid() {
 
     return (
         <div>
-            <Button variant="outlined" onClick={getListItems}>Refresh</Button>
+        <Button variant="outlined" onClick={getListItems}><RefreshIcon/> Refresh</Button>
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={items}

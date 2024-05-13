@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 export default function UserListDataGrid() {
     const navigate = useNavigate();
@@ -39,7 +40,7 @@ export default function UserListDataGrid() {
 
     return (
         <div>
-            <Button variant="outlined" onClick={getUserLists}>Refresh</Button>
+        <Button variant="outlined" onClick={getUserLists}><RefreshIcon/> Refresh</Button>
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={lists}
