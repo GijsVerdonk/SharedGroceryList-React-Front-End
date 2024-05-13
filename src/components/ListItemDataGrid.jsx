@@ -5,13 +5,16 @@ import {useEffect, useState} from "react";
 import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 import {useNavigate, useParams} from 'react-router-dom';
-import RefreshIcon from "@mui/icons-material/Refresh.js";
+import RefreshIcon from '@mui/icons-material/Refresh';
+import DeleteIcon from '@mui/icons-material/Delete';
+import axios from "axios";
 
 export default function ListItemDataGrid() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [items, setItems] = useState([]);
     const [selectedList, setSelectedList] = useState(null);
+    const accessToken = Cookies.get('accessToken');
 
     const getListItems = async () => {
         const accessToken = Cookies.get('accessToken');
@@ -47,6 +50,16 @@ export default function ListItemDataGrid() {
         navigate(`/item/${row.id}`);
     }
 
+    const handleItemDelete = (id) => {
+        axios.delete(`https://localhost:7001/api/List/${id}/Items/${id}` ,{
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        })
+            .then(response => console.log(response))
+            .catch(err=> console.log(err))
+    }
+
     return (
         <div>
         <Button variant="outlined" onClick={getListItems}><RefreshIcon/> Refresh</Button>
@@ -56,6 +69,10 @@ export default function ListItemDataGrid() {
                 columns={[
                     { field: 'name', headerName: 'Naam', width: 150, editable: false },
                     { field: 'quantity', headerName: 'Hoeveelheid', width: 150, editable: false },
+                    {
+                        renderCell: () => (
+                            <Button onClick={() => handleItemDelete(id)}><DeleteIcon/></Button>)
+                    },
                 ]}
                 onRowClick={handleItemClick}
             />
