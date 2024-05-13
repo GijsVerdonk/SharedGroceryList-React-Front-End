@@ -1,5 +1,7 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import ListItemDataGrid from "./ListItemDataGrid.jsx";
+import AddListItemForm from "./AddListItemForm.jsx";
 
 const List = () => {
   const { id } = useParams();
@@ -22,7 +24,11 @@ const List = () => {
 
   if (list) {
     return (
-        <div><h2>{list.name}</h2></div>
+        <div>
+          <h2>{list.name}</h2>
+          <ListItemDataGrid></ListItemDataGrid>
+          <AddListItemForm></AddListItemForm>
+        </div>
     );
   }
 
