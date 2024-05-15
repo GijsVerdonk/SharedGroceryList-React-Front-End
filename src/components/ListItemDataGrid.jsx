@@ -8,6 +8,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
+import RecipeFromAI from "./RecipeFromAI.jsx";
 
 export default function ListItemDataGrid() {
     const navigate = useNavigate();

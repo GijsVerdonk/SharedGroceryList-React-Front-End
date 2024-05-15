@@ -4,6 +4,8 @@ import ListItemDataGrid from "./ListItemDataGrid.jsx";
 import AddListItemForm from "./AddListItemForm.jsx";
 import Typography from "@mui/material/Typography";
 import DeleteListButton from "./DeleteListButton.jsx";
+import RecipeFromAI from "./RecipeFromAI.jsx";
+import * as React from "react";
 
 const List = () => {
   const { id } = useParams();
@@ -31,6 +33,7 @@ const List = () => {
             <Typography sx={{ m: 3 }} variant="h5" component="h5">{list.name}</Typography>
             <ListItemDataGrid></ListItemDataGrid>
             <AddListItemForm></AddListItemForm>
+            <RecipeFromAI></RecipeFromAI>
             <DeleteListButton></DeleteListButton>
         </div>
     );
@@ -39,6 +42,7 @@ const List = () => {
     return (
         <div>
         <h1>Lijst niet gevonden.</h1>
+            <RecipeFromAI></RecipeFromAI>
       </div>
   );
 };

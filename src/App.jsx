@@ -9,6 +9,7 @@ import {useEffect} from "react";
 import Cookies from 'js-cookie';
 import List from "./components/List.jsx";
 import Item from "./components/Item.jsx";
+import RecipeFromAI from "./components/RecipeFromAI.jsx";
 
 const App = () => {
   const {isAuthenticated} = useAuth0();
