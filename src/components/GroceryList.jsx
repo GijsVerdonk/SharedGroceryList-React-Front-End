@@ -5,7 +5,7 @@ const GroceryList = () => {
 
     useEffect(() => {
         const getItems = async () => {
-            const response = await fetch('http://localhost:5226/api/Item');
+            const response = await fetch('https://localhost:7001/api/Item');
             if (response.ok) {
                 const data = await response.json();
                 setItems(data);

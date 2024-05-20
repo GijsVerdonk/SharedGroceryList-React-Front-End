@@ -24,13 +24,13 @@ const Profile = () => {
 
                 document.cookie = `accessToken=${accessToken}; Secure; SameSite=None;`; //If HttpOnly is added, doesn't work.
 
-                const response = await fetch('https://localhost:7001/api/User/GetAuth0Id');
-
-                const metadataResponse = await fetch(userDetailsByIdUrl, {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                });
+                // const response = await fetch('https://localhost:7001/api/User/GetAuth0Id');
+                //
+                // const metadataResponse = await fetch(userDetailsByIdUrl, {
+                //     headers: {
+                //         Authorization: `Bearer ${accessToken}`,
+                //     },
+                // });
 
                 const { user_metadata } = await metadataResponse.json();
 
@@ -47,7 +47,7 @@ const Profile = () => {
 
     handleLogin();
     function handleLogin() {
-                axios.get('http://localhost:5226/api/User', {
+                axios.get('https://localhost:7001/api/User', {
                     headers: {
                         'Authorization': `Bearer ${accessToken}`
                     }
@@ -57,7 +57,7 @@ const Profile = () => {
                 console.log(err)
                 if (err.response.status == 404) {
                     console.log("First time login, user will be created.")
-                    axios.post('http://localhost:5226/api/User', { user }, {
+                    axios.post('https://localhost:7001/api/User', { user }, {
                         headers: {
                             'Authorization': `Bearer ${accessToken}`
                         }
