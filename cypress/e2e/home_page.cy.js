@@ -27,7 +27,7 @@ describe('Login flow', () => {
 });
 
 describe('after login', () => {
-    it('successfully login to an account that DOES exists', () => {
+    it('successfully add an item to an existing account', () => {
         cy.login('appel@gmail.com', 'CF5UnRy2uk*tdAEfMt4*Vv2DgUY');
         cy.contains('Rows per page:');
         cy.get('#outlined-basic').type("List Z");
