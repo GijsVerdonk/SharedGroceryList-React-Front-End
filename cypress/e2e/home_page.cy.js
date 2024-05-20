@@ -28,8 +28,12 @@ describe('Login flow', () => {
 
 describe('after login', () => {
         it('successfully login to an account that DOES exists', () => {
-            cy.login('test@account.com', '&jS;;4RaZv~h**5');
+            cy.login('appel@gmail.com', 'CF5UnRy2uk*tdAEfMt4*Vv2DgUY');
             cy.contains('Rows per page:');
             //TODO: add more tests.
+            cy.get('#outlined-basic').type("List Z");
+            cy.get('form > .MuiButtonBase-root').click();
+            cy.get('#outlined-basic').type("");
+            cy.contains('List Z');
         });
     });
