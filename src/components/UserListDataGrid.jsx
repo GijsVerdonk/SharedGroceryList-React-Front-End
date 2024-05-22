@@ -12,12 +12,11 @@ export default function UserListDataGrid() {
     const [lists, setLists] = useState([]);
     const [selectedList, setSelectedList] = useState(null);
 
-    const getUserLists = async () => {
-        const accessToken = Cookies.get('accessToken');
-        console.log(`Bearer ${accessToken}`)
+    const getUserLists = async (token) => {
+        console.log(`Bearer ${token}`)
         const response = await fetch('https://localhost:7001/api/User/Lists', {
             headers: {
-                'Authorization': `Bearer ${accessToken}`
+                'Authorization': `Bearer ${token}`
             }
         });
         if (response.ok) {
@@ -30,8 +29,12 @@ export default function UserListDataGrid() {
     };
 
     useEffect(() => {
-        getUserLists();
-    }, []);
+        const accessToken = Cookies.get('accessToken');
+
+        if (accessToken) {
+            getUserLists(accessToken);
+        }
+    }, [Cookies.get('accessToken')]);
 
     const handleListClick = (row) => {
         setSelectedList(row);
