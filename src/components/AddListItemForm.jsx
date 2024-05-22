@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Cookies from 'js-cookie';
 import {useParams} from "react-router-dom";
 
-const AddListItemForm = () => {
+const AddListItemForm = ( {onPostSuccess} ) => {
     const { id } = useParams();
     const accessToken = Cookies.get('accessToken');
     const [item, setItem] = useState({
@@ -26,8 +26,13 @@ const AddListItemForm = () => {
                 'Authorization': `Bearer ${accessToken}`
             }
         })
-            .then(response => console.log(response))
-            .catch(err=> console.log(err))
+            .then(response => {
+            console.log(response);
+            onPostSuccess();
+        })
+            .catch(err => {
+                console.log(err);
+            });
     }
         return(
             <div>

@@ -6,11 +6,14 @@ import Button from "@mui/material/Button";
 import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
 import RefreshIcon from "@mui/icons-material/Refresh";
+import CreateGroceryListForm from "./CreateGroceryListForm.jsx";
+import DeleteIcon from "@mui/icons-material/Delete.js";
 
 export default function UserListDataGrid() {
     const navigate = useNavigate();
     const [lists, setLists] = useState([]);
     const [selectedList, setSelectedList] = useState(null);
+    const [refresh, setRefresh] = useState(false);
 
     const getUserLists = async (token) => {
         console.log(`Bearer ${token}`)
@@ -34,30 +37,32 @@ export default function UserListDataGrid() {
         if (accessToken) {
             getUserLists(accessToken);
         }
-    }, [Cookies.get('accessToken')]);
+    }, [Cookies.get('accessToken'), refresh]);
 
     const handleListClick = (row) => {
         setSelectedList(row);
         navigate(`/list/${row.id}`);
     }
 
+    const handleRefresh = async () => {
+        setRefresh(prev => !prev);
+    }
+
     return (
         <div>
-        <Button variant="outlined" onClick={getUserLists}><RefreshIcon/> Refresh</Button>
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={lists}
                 columns={[
                     { field: 'id', headerName: 'ID', width: 90 },
                     { field: 'name', headerName: 'Naam', width: 150, editable: false },
-                    { field: 'code', headerName: 'Code', width: 150, editable: false },
-                    { field: 'codeActiveSince', headerName: 'CodeActiveSince', width: 150, editable: false },
-                    { field: 'isActive', headerName: 'isActive', width: 150, editable: false },
                 ]}
                 onRowClick={handleListClick}
             />
         </Box>
             {/*{selectedList && <List> list={selectedList}</List>}*/}
+            <CreateGroceryListForm onPostSuccess={handleRefresh}></CreateGroceryListForm>
+
         </div>
     );
 }

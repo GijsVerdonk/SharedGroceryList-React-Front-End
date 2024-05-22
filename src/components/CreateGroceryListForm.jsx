@@ -4,7 +4,7 @@ import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import Cookies from 'js-cookie';
 
-const CreateGroceryListForm = () => {
+const CreateGroceryListForm = ({ onPostSuccess }) => {
 
     const accessToken = Cookies.get('accessToken');
     const [list, setList] = useState({
@@ -21,8 +21,13 @@ const CreateGroceryListForm = () => {
                 'Authorization': `Bearer ${accessToken}`
             }
         })
-            .then(response => console.log(response))
-            .catch(err=> console.log(err))
+            .then(response => {
+                console.log(response);
+                onPostSuccess();
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
         return(
             <div>

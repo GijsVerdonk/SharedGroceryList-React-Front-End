@@ -32,7 +32,7 @@ const List = () => {
 
             <Typography sx={{ m: 3 }} variant="h5" component="h5">{list.name}</Typography>
             <ListItemDataGrid></ListItemDataGrid>
-            <AddListItemForm></AddListItemForm>
+
             <RecipeFromAI></RecipeFromAI>
             <DeleteListButton></DeleteListButton>
         </div>

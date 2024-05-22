@@ -8,7 +8,6 @@ function Home() {
     <div>
         <Profile></Profile>
         <UserListDataGrid></UserListDataGrid>
-        <CreateGroceryListForm></CreateGroceryListForm>
         <RecipeFromAI></RecipeFromAI>
     </div>
   );

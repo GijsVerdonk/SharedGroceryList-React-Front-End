@@ -9,6 +9,7 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
 import RecipeFromAI from "./RecipeFromAI.jsx";
+import AddListItemForm from "./AddListItemForm.jsx";
 
 export default function ListItemDataGrid() {
     const navigate = useNavigate();
@@ -16,6 +17,8 @@ export default function ListItemDataGrid() {
     const [items, setItems] = useState([]);
     const [selectedList, setSelectedList] = useState(null);
     const accessToken = Cookies.get('accessToken');
+    const [refresh, setRefresh] = useState(false);
+
 
     const getListItems = async () => {
         const accessToken = Cookies.get('accessToken');
@@ -44,7 +47,7 @@ export default function ListItemDataGrid() {
 
     useEffect(() => {
         getListItems();
-    }, []);
+    }, [refresh]);
 
     const handleItemDelete = (listId, itemId) => {
         axios.delete(`https://localhost:7001/api/List/${listId}/Items/${itemId}` ,{
@@ -52,13 +55,21 @@ export default function ListItemDataGrid() {
                 'Authorization': `Bearer ${accessToken}`
             }
         })
-            .then(response => console.log(response))
-            .catch(err=> console.log(err))
+            .then(response => {
+                console.log(response);
+                handleRefresh();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    const handleRefresh = async () => {
+        setRefresh(prev => !prev);
     }
 
     return (
         <div>
-        <Button variant="outlined" onClick={getListItems}><RefreshIcon/> Refresh</Button>
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={items}
@@ -73,6 +84,7 @@ export default function ListItemDataGrid() {
             />
         </Box>
             {/*{selectedList && <List> list={selectedList}</List>}*/}
+            <AddListItemForm onPostSuccess={handleRefresh}></AddListItemForm>
         </div>
     );
 }

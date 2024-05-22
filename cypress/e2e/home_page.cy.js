@@ -7,7 +7,7 @@ describe('Login flow', () => {
 
         cy.origin('https://dev-1qptdla0pgqbqxfn.us.auth0.com', () => {
             cy.contains('Log in to dev-1qptdla0pgqbqxfn to continue to SharedGroceryList.');
-            cy.get('input[name="username"]').type("aaaaaa@account.com");
+            cy.get('input[name="username"]').type("aaaaaaa@account.com");
             cy.get('input[name="password"]').type("wrongpassword");
             cy.get('button[name="action"]').click();
 
@@ -30,16 +30,16 @@ describe('After login', () => {
         cy.login('appel@gmail.com', 'CF5UnRy2uk*tdAEfMt4*Vv2DgUY');
         cy.contains('Rows per page:');
         cy.get('#outlined-basic').type("List Z");
-        cy.get('form > .MuiButtonBase-root').click();
+        cy.contains('button', 'Toevoegen').click();
         cy.get('#outlined-basic').type(" ");
-        cy.contains('button', 'Refresh').click();
+        cy.contains('SGL').click();
         cy.contains('List Z');
     });
 
     it('successfully open an existing list', () => {
         cy.login('appel@gmail.com', 'CF5UnRy2uk*tdAEfMt4*Vv2DgUY');
         cy.contains('Rows per page:');
-        cy.contains('button', 'Refresh').click();
+        cy.contains('SGL').click();
         cy.contains('List Z').click();
         cy.contains('Hoeveelheid');
     });
@@ -47,14 +47,13 @@ describe('After login', () => {
     it('successfully add an item to a list', () => {
         cy.login('appel@gmail.com', 'CF5UnRy2uk*tdAEfMt4*Vv2DgUY');
         cy.contains('Rows per page:');
-        cy.contains('button', 'Refresh').click();
+        cy.contains('SGL').click();
         cy.contains('List Z').click();
         cy.contains('Hoeveelheid');
         cy.get(':nth-child(1) > .MuiInputBase-root > #outlined-basic').type("Appel");
         cy.get(':nth-child(2) > .MuiInputBase-root > #outlined-basic').type("1");
-        cy.get(':nth-child(3) > form > .MuiButtonBase-root').click();
+        cy.contains('button', 'Toevoegen').click();
         cy.get(':nth-child(1) > .MuiInputBase-root > #outlined-basic').type(" ");
-        cy.contains('button', 'Refresh').click();
         cy.contains('Appel');
     });
 
