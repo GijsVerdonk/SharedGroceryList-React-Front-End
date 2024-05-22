@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import Cookies from 'js-cookie';
 import {useParams} from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete.js";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
 
 const DeleteListButton = () => {
     const { id } = useParams();
@@ -21,6 +23,7 @@ const DeleteListButton = () => {
     }
         return(
             <div>
+                <Typography sx={{ m: 3 }} variant="h5" component="h5">Lijst instellingen</Typography>
                 <form onSubmit={handleSubmit}>
                     <Button type="submit"><DeleteIcon/>Verwijder lijst</Button>
                 </form>

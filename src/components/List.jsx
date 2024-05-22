@@ -33,7 +33,7 @@ const List = () => {
             <Typography sx={{ m: 3 }} variant="h5" component="h5">{list.name}</Typography>
             <ListItemDataGrid></ListItemDataGrid>
 
-            <RecipeFromAI></RecipeFromAI>
+            {/*<RecipeFromAI></RecipeFromAI>*/}
             <DeleteListButton></DeleteListButton>
         </div>
     );
@@ -42,7 +42,7 @@ const List = () => {
     return (
         <div>
         <h1>Lijst niet gevonden.</h1>
-            <RecipeFromAI></RecipeFromAI>
+            {/*<RecipeFromAI></RecipeFromAI>*/}
       </div>
   );
 };

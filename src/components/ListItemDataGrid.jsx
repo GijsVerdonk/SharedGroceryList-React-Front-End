@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
 import RecipeFromAI from "./RecipeFromAI.jsx";
 import AddListItemForm from "./AddListItemForm.jsx";
+import Typography from "@mui/material/Typography";
 
 export default function ListItemDataGrid() {
     const navigate = useNavigate();
@@ -84,6 +85,7 @@ export default function ListItemDataGrid() {
             />
         </Box>
             {/*{selectedList && <List> list={selectedList}</List>}*/}
+            <Typography sx={{ m: 3 }} variant="h5" component="h5">Voeg een nieuw item toe</Typography>
             <AddListItemForm onPostSuccess={handleRefresh}></AddListItemForm>
         </div>
     );

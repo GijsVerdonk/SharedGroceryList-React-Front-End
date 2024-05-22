@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import RefreshIcon from "@mui/icons-material/Refresh";
 import CreateGroceryListForm from "./CreateGroceryListForm.jsx";
 import DeleteIcon from "@mui/icons-material/Delete.js";
+import Typography from "@mui/material/Typography";
 
 export default function UserListDataGrid() {
     const navigate = useNavigate();
@@ -61,6 +62,7 @@ export default function UserListDataGrid() {
             />
         </Box>
             {/*{selectedList && <List> list={selectedList}</List>}*/}
+            <Typography sx={{ m: 3 }} variant="h5" component="h5">Voeg een nieuwe lijst toe</Typography>
             <CreateGroceryListForm onPostSuccess={handleRefresh}></CreateGroceryListForm>
 
         </div>
