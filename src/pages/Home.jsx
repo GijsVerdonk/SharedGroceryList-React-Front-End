@@ -8,7 +8,7 @@ import * as React from "react";
 function Home() {
   return (
     <div>
-        <Typography sx={{ m: 3 }} variant="h5" component="h5">Booschappenlijsten</Typography>
+        <Typography sx={{ m: 3 }} variant="h5" component="h5">Boodschappenlijsten</Typography>
         <Profile></Profile>
         <UserListDataGrid></UserListDataGrid>
         {/*<RecipeFromAI></RecipeFromAI>*/}
