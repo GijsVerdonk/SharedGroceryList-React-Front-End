@@ -73,17 +73,17 @@ export default function ListItemDataGrid() {
     return (
         <div>
             <Paper sx={{ p: 3, m: 3}} elevation={3}>
+                <Typography sx={{ m: 3 }}>Klik op een item om deze uit de lijst te halen.</Typography>
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={items}
                 columns={[
                     { field: 'name', headerName: 'Naam', width: 150, editable: false },
                     { field: 'quantity', headerName: 'Hoeveelheid', width: 150, editable: false },
-                    {
-                        renderCell: (params) => (
-                            <Button onClick={() => handleItemDelete(id, params.row.id)} variant="outlined" color="error"><DeleteIcon/></Button>)
-                    },
                 ]}
+                onRowClick={(params) => {
+                    handleItemDelete(id, params.row.id);
+                }}
             />
         </Box>
             </Paper>
