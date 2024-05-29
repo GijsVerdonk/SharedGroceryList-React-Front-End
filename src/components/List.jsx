@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import DeleteListButton from "./DeleteListButton.jsx";
 import * as React from "react";
 import Cookies from "js-cookie";
-import {Alert} from "@mui/material";
+import {Alert, Paper} from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const List = () => {
@@ -53,9 +53,10 @@ const List = () => {
   if (list && !loading) {
     return (
         <div>
-
-            <Typography sx={{ m: 3 }} variant="h5" component="h5">{list.name}</Typography>
+            <Paper sx={{ p: 3, m: 3}} elevation={3}>
+            <Typography sx={{ m: 3 }} variant="h4" component="h4">{list.name}</Typography>
             <ListItemDataGrid></ListItemDataGrid>
+            </Paper>
 
             {/*<RecipeFromAI></RecipeFromAI>*/}
             <DeleteListButton onDelete={handleDelete}/>

@@ -11,6 +11,7 @@ import axios from "axios";
 import RecipeFromAI from "./RecipeFromAI.jsx";
 import AddListItemForm from "./AddListItemForm.jsx";
 import Typography from "@mui/material/Typography";
+import Paper from '@mui/material/Paper';
 
 export default function ListItemDataGrid() {
     const navigate = useNavigate();
@@ -79,14 +80,16 @@ export default function ListItemDataGrid() {
                     { field: 'quantity', headerName: 'Hoeveelheid', width: 150, editable: false },
                     {
                         renderCell: (params) => (
-                            <Button onClick={() => handleItemDelete(id, params.row.id)}><DeleteIcon/></Button>)
+                            <Button onClick={() => handleItemDelete(id, params.row.id)} variant="outlined" color="error"><DeleteIcon/></Button>)
                     },
                 ]}
             />
         </Box>
             {/*{selectedList && <List> list={selectedList}</List>}*/}
-            <Typography sx={{ m: 3 }} variant="h5" component="h5">Voeg een nieuw item toe</Typography>
+            <Paper sx={{ p: 3, m: 3}} elevation={3}>
+            <Typography sx={{ m: 3 }} variant="h4" component="h4">Voeg een nieuw item toe</Typography>
             <AddListItemForm onPostSuccess={handleRefresh}></AddListItemForm>
+            </Paper>
         </div>
     );
 }

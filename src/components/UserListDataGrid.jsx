@@ -9,6 +9,8 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import CreateGroceryListForm from "./CreateGroceryListForm.jsx";
 import DeleteIcon from "@mui/icons-material/Delete.js";
 import Typography from "@mui/material/Typography";
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 
 export default function UserListDataGrid() {
     const navigate = useNavigate();
@@ -62,8 +64,11 @@ export default function UserListDataGrid() {
             />
         </Box>
             {/*{selectedList && <List> list={selectedList}</List>}*/}
-            <Typography sx={{ m: 3 }} variant="h5" component="h5">Voeg een nieuwe lijst toe</Typography>
-            <CreateGroceryListForm onPostSuccess={handleRefresh}></CreateGroceryListForm>
+            <Paper sx={{ p: 3, m: 3}} elevation={1}>
+            <Typography sx={{ m: 3 }} variant="h4" component="h4">Voeg een nieuwe lijst toe</Typography>
+                <Typography sx={{ m: 3 }}>Voer de naam van jou nieuwe lijst in.</Typography>
+                <CreateGroceryListForm onPostSuccess={handleRefresh}></CreateGroceryListForm>
+            </Paper>
 
         </div>
     );

@@ -3,15 +3,20 @@ import CreateGroceryListForm from "../components/CreateGroceryListForm.jsx";
 import UserListDataGrid from "../components/UserListDataGrid.jsx"
 import RecipeFromAI from "../components/RecipeFromAI.jsx"
 import Typography from "@mui/material/Typography";
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import * as React from "react";
+import {Paper} from "@mui/material";
 
 function Home() {
   return (
     <div>
-        <Typography sx={{ m: 3 }} variant="h5" component="h5">Boodschappenlijsten</Typography>
+        <Paper sx={{ p: 3 }} elevation={3}>
+        <Typography sx={{ m: 3 }} variant="h4" component="h4">Boodschappenlijsten</Typography>
+        <Typography sx={{ m: 3 }}>Hier zijn al jouw boodschappenlijsten terug te vinden.</Typography>
+
         <Profile></Profile>
-        <UserListDataGrid></UserListDataGrid>
-        {/*<RecipeFromAI></RecipeFromAI>*/}
+        <UserListDataGrid sx={{ p: 3 }} ></UserListDataGrid>
+        </Paper>
     </div>
   );
 }

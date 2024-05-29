@@ -6,6 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete.js";
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import {Paper} from "@mui/material";
 
 const DeleteListButton = ({ onDelete }) => {
     const { id } = useParams();
@@ -31,10 +32,12 @@ const DeleteListButton = ({ onDelete }) => {
     }
         return(
             <div>
-                <Typography sx={{ m: 3 }} variant="h5" component="h5">Lijst instellingen</Typography>
+                <Paper sx={{ p: 3, m: 3}} elevation={3}>
+                <Typography sx={{ m: 3 }} variant="h4" component="h4">Lijst instellingen</Typography>
                 <form onSubmit={handleSubmit}>
-                    <Button type="submit"><DeleteIcon/>Verwijder lijst</Button>
+                    <Button type="submit" variant="outlined" color="error"><DeleteIcon/>Verwijder lijst</Button>
                 </form>
+                </Paper>
             </div>
         )
 }
