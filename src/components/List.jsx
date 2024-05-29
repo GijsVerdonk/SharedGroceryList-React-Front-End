@@ -53,10 +53,10 @@ const List = () => {
   if (list && !loading) {
     return (
         <div>
-            <Paper sx={{ p: 3, m: 3}} elevation={3}>
+            {/*<Paper sx={{ p: 3, m: 3}} elevation={3}>*/}
             <Typography sx={{ m: 3 }} variant="h4" component="h4">{list.name}</Typography>
             <ListItemDataGrid></ListItemDataGrid>
-            </Paper>
+            {/*</Paper>*/}
 
             {/*<RecipeFromAI></RecipeFromAI>*/}
             <DeleteListButton onDelete={handleDelete}/>

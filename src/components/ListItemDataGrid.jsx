@@ -72,6 +72,7 @@ export default function ListItemDataGrid() {
 
     return (
         <div>
+            <Paper sx={{ p: 3, m: 3}} elevation={3}>
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={items}
@@ -85,6 +86,7 @@ export default function ListItemDataGrid() {
                 ]}
             />
         </Box>
+            </Paper>
             {/*{selectedList && <List> list={selectedList}</List>}*/}
             <Paper sx={{ p: 3, m: 3}} elevation={3}>
             <Typography sx={{ m: 3 }} variant="h4" component="h4">Voeg een nieuw item toe</Typography>
