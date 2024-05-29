@@ -5,14 +5,24 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AppBar from "./components/AppBar.jsx";
 import {Alert} from "@mui/material";
-import {useEffect} from "react";
-import Cookies from 'js-cookie';
 import List from "./components/List.jsx";
 import Item from "./components/Item.jsx";
-import RecipeFromAI from "./components/RecipeFromAI.jsx";
+import CircularProgress from "@mui/material/CircularProgress";
+import * as React from "react";
 
 const App = () => {
-  const {isAuthenticated} = useAuth0();
+  const {isAuthenticated, isLoading} = useAuth0();
+
+  if (isLoading) {
+      return (
+
+          <div>
+              <AppBar/>
+              <CircularProgress sx={{ m: 2 }}/>
+          </div>
+      )
+  }
+
   return (
     <Router>
       <div>

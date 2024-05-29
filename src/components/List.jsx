@@ -12,8 +12,7 @@ const List = () => {
   const { id } = useParams();
   const [list, setList ] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
+  const [isDeleted, setIsDeleted] = useState(false);
 
     const accessToken = Cookies.get('accessToken');
     const getList = async () => {
@@ -34,8 +33,14 @@ const List = () => {
       }
     };
 
+  useEffect(() => {
     getList();
-  }, []);
+  }, [id]);
+
+  const handleDelete = () => {
+    setList(null);
+    setIsDeleted(true);
+  };
 
   if (loading) {
     return (
@@ -53,9 +58,21 @@ const List = () => {
             <ListItemDataGrid></ListItemDataGrid>
 
             {/*<RecipeFromAI></RecipeFromAI>*/}
-            <DeleteListButton></DeleteListButton>
+            <DeleteListButton onDelete={handleDelete}/>
         </div>
     );
+  }
+
+  if (isDeleted) {
+      return (
+          <div>
+              <a style={{ textDecoration: 'none'}} href="/">
+              <Alert variant="filled" severity="warning">
+                  Lijst is succesvol verwijderd. Klik hier om terug te gaan naar jouw overzicht van boodschappenlijsten.
+              </Alert>
+              </a>
+          </div>
+      )
   }
 
     return (
@@ -64,7 +81,7 @@ const List = () => {
             Lijst is niet gevonden.
           </Alert>
       </div>
-  );
+    );
 };
 
 export default List;
