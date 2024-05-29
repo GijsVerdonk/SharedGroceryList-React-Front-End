@@ -7,7 +7,7 @@ describe('Login flow', () => {
 
         cy.origin('https://dev-1qptdla0pgqbqxfn.us.auth0.com', () => {
             cy.contains('Log in to dev-1qptdla0pgqbqxfn to continue to SharedGroceryList.');
-            cy.get('input[name="username"]').type("aaaaaaa@account.com");
+            cy.get('input[name="username"]').type("aaaaaaaa@account.com");
             cy.get('input[name="password"]').type("wrongpassword");
             cy.get('button[name="action"]').click();
 
@@ -21,7 +21,7 @@ describe('Login flow', () => {
 
         cy.login('test@account.com', '&jS;;4RaZv~h**5');
 
-        cy.contains('button', 'Mijn lijsten');
+        cy.contains('Mijn lijsten');
     });
 });
 
@@ -60,7 +60,7 @@ describe('After login', () => {
     it('successfully log out', () => {
         cy.login('appel@gmail.com', 'CF5UnRy2uk*tdAEfMt4*Vv2DgUY');
         cy.get('.MuiAvatar-root').click();
-        cy.contains('button', 'Mijn lijsten');
+        cy.contains('Mijn lijsten');
         cy.get('.MuiList-root > :nth-child(3) > .MuiButtonBase-root').click();
         cy.contains('Log in om toegang te krijgen tot alle functionaliteit.');
     })

@@ -38,7 +38,7 @@ const AddListItemForm = ( {onPostSuccess} ) => {
             <div>
                 <form onSubmit={handleSubmit}>
                     <TextField sx={{m: 2}} id="outlined-basic" label="Naam" variant="outlined" required onChange={handleInput} type="text" name="name" placeholder="Naam"/>
-                    <TextField sx={{m: 2}} id="outlined-basic" label="Hoeveelheid" variant="outlined" required onChange={handleInput} type="text" name="quantity" placeholder="Hoeveelheid"/>
+                    <TextField sx={{m: 2}} id="outlined-basic" label="Hoeveelheid" variant="outlined" placeholder="bijv. 10 gram of 5 stuks" required onChange={handleInput} type="text" name="quantity"/>
                     <Button sx={{m: 2}}  variant="contained" type="submit">Toevoegen</Button>
                 </form>
             </div>
