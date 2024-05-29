@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import * as React from "react";
 import {Paper} from "@mui/material";
+import AddExistingList from "../components/AddExistingList.jsx";
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
 
         <Profile></Profile>
         <UserListDataGrid sx={{ p: 3 }} ></UserListDataGrid>
+            <AddExistingList/>
         </Paper>
     </div>
   );

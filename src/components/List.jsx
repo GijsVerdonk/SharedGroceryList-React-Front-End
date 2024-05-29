@@ -7,6 +7,8 @@ import * as React from "react";
 import Cookies from "js-cookie";
 import {Alert, Paper} from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
+import GenerateListCode from "./GenerateListCode.jsx";
+import RecipeFromAI from "./RecipeFromAI.jsx";
 
 const List = () => {
   const { id } = useParams();
@@ -53,13 +55,22 @@ const List = () => {
   if (list && !loading) {
     return (
         <div>
-            {/*<Paper sx={{ p: 3, m: 3}} elevation={3}>*/}
             <Typography sx={{ m: 3 }} variant="h4" component="h4">{list.name}</Typography>
             <ListItemDataGrid></ListItemDataGrid>
-            {/*</Paper>*/}
+            <Paper sx={{p: 3, m: 3}} elevation={3}>
+                <Typography sx={{m: 3}} variant="h4" component="h4">Vraag AI om hulp</Typography>
+                <RecipeFromAI/>
+            </Paper>
 
-            {/*<RecipeFromAI></RecipeFromAI>*/}
-            <DeleteListButton onDelete={handleDelete}/>
+            <Paper sx={{p: 3, m: 3}} elevation={3}>
+                <Typography sx={{m: 3}} variant="h4" component="h4">Lijst instellingen</Typography>
+                <hr/>
+                <Typography sx={{m: 3}} variant="h6" component="h6">Koppelcode aanpassen</Typography>
+                <GenerateListCode/>
+                <hr/>
+                <Typography sx={{m: 3}} variant="h6" component="h6">Lijst verwijderen</Typography>
+                <DeleteListButton onDelete={handleDelete}/>
+            </Paper>
         </div>
     );
   }

@@ -32,12 +32,9 @@ const DeleteListButton = ({ onDelete }) => {
     }
         return(
             <div>
-                <Paper sx={{ p: 3, m: 3}} elevation={3}>
-                <Typography sx={{ m: 3 }} variant="h4" component="h4">Lijst instellingen</Typography>
                 <form onSubmit={handleSubmit}>
                     <Button type="submit" variant="outlined" color="error"><DeleteIcon/>Verwijder lijst</Button>
                 </form>
-                </Paper>
             </div>
         )
 }
